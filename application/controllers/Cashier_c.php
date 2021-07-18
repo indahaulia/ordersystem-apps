@@ -92,7 +92,7 @@ class Cashier_c extends CI_Controller {
                         <td>".$key->note."</td>
                         <td>".$key->price."</td>
                     </tr>";
-            $total += $key->price;
+            $total += $key->price*$key->qty;
         }
 
         $tax = $total*0.1;

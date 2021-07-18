@@ -64,8 +64,12 @@ class Dashboard extends CI_Controller {
         $data  = array(
             'dishert' => $dishert,
         );
+
+        $data1 = array(
+            'active' => "Menu",
+        );
         $this->load->view("admin/header.php");
-        $this->load->view("admin/sidebar.php");
+        $this->load->view("admin/sidebar.php",$data1);
         $this->load->view("admin/inputmenu.php",$data);
         $this->load->view("admin/footer.php");
     }
@@ -80,10 +84,14 @@ class Dashboard extends CI_Controller {
         if ($validation->run()) {
             $product->save();
             $this->session->set_flashdata('success', 'Berhasil disimpan');
-        }   
+        }
+        
+        $data1 = array(
+            'active' => "Menu",
+        );
         
         $this->load->view("admin/header.php");
-        $this->load->view("admin/sidebar.php");
+        $this->load->view("admin/sidebar.php",$data1);
         $this->load->view("admin/inputmenu.php");
         $this->load->view("admin/footer.php");
     }
@@ -99,12 +107,16 @@ class Dashboard extends CI_Controller {
             $dishert->update();
             $this->session->set_flashdata('success', 'Berhasil disimpan');
         }
+
+        $data1 = array(
+            'active' => "Menu",
+        );
         
         $data["dishert"] = $dishert->getById($id);
         if (!$data["dishert"]) show_404();
 
         $this->load->view("admin/header.php");
-        $this->load->view("admin/sidebar.php");
+        $this->load->view("admin/sidebar.php",$data1);
         $this->load->view("admin/editmenu.php",$data);
         $this->load->view("admin/footer.php");
     }
